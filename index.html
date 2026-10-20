@@ -160,16 +160,18 @@ h1,h2,h3{text-wrap:balance}
 .sec-sub{margin:18px 0 0;max-width:58ch;color:var(--fg-2);font-size:17px;line-height:1.6}
 /* palavra de destaque: itálico da fonte de título, a do brand guideline */
 .enfase{font-family:var(--serif);font-style:italic;font-size:1.14em;color:var(--enfase)}
+.enfase.sublinhado{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
 
 /* manifesto: claro nos dois temas, com o texto numa caixa branca que avança sobre a pintura */
 .manifesto{--bg:#F0EDE4;--fg:#1A2142;--fg-2:#555C78;background:var(--bg);color:var(--fg);overflow:hidden}
 .manifesto-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center}
-.manifesto-caixa{grid-column:1/7;grid-row:1;position:relative;z-index:2;padding:clamp(28px,3.4vw,48px);border-radius:var(--r-card);background:#FFF;box-shadow:0 0 0 1px rgba(31,43,88,.06),0 30px 60px -34px rgba(31,43,88,.5)}
+.manifesto-caixa{grid-column:1/8;grid-row:1;position:relative;z-index:2;padding:clamp(28px,3.4vw,48px);border-radius:var(--r-card);background:#FFF;box-shadow:0 0 0 1px rgba(31,43,88,.06),0 30px 60px -34px rgba(31,43,88,.5)}
 .manifesto-foto{grid-column:5/13;grid-row:1;position:relative;isolation:isolate}
 .selo-ouro{width:34px;height:auto;margin-bottom:28px}
-.manifesto-frase{margin:0;font-family:var(--serif);font-size:clamp(1.7rem,2.7vw,2.5rem);line-height:1.2;letter-spacing:-.005em}
-.manifesto-frase span{display:block}
-.manifesto-frase span+span{margin-top:.35em}
+/* as três fórmulas uma embaixo da outra, com o resultado alinhado em coluna */
+.manifesto-frase{margin:0;display:grid;grid-template-columns:auto auto;justify-content:start;column-gap:.32em;row-gap:.35em;font-family:var(--serif);font-size:clamp(1.4rem,2.1vw,2.05rem);line-height:1.2;letter-spacing:-.005em}
+.manifesto-frase span{white-space:nowrap}
+@media (max-width:640px){.manifesto-frase{font-size:1.28rem}.manifesto-frase span:nth-child(odd){white-space:normal}}
 .manifesto-frase em{font-style:italic;color:var(--marinho)}
 .manifesto-apoio{margin:28px 0 0;max-width:50ch;color:var(--fg-2);font-size:17px;line-height:1.6}
 .manifesto-foto img{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
@@ -340,6 +342,7 @@ img.avatar{object-fit:cover}
 .faq-lista details > :last-child{margin-bottom:22px}
 .faq-itens{margin:0 0 14px;padding-left:20px;max-width:60ch;display:grid;gap:8px;color:var(--fg-2);font-size:15.5px;line-height:1.6}
 .faq-itens li::marker{color:var(--dourado)}
+.faq-sub{margin:8px 0 2px;padding-left:20px;display:grid;gap:6px;list-style:circle}
 .faq-lista details .btn-texto{margin-left:6px;font-size:15px}
 @media (max-width:860px){.faq-grade{grid-template-columns:1fr}}
 
@@ -869,7 +872,7 @@ img.avatar{object-fit:cover}
           <circle cx="170" cy="14" r="3"/><circle cx="342" cy="46" r="3"/>
         </svg>
         <img class="selo-ouro" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjA3LjUzNyIgaGVpZ2h0PSIyMTQuNzYiIHZpZXdCb3g9IjAgMCAyMDcuNTM3IDIxNC43NiI+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXBfMSI+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDAsMjE0Ljc2KSIgZD0iTTAgMjE0Ljc2SDIwNy41MzdWMEgwWiIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+CjxnIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSJMYXllciAxIj4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTAyLjQ5MjMsNzQuOTY5ODk4KSIgZD0iTTAgMCA2My4xNjcgLjAwMiA2My4xODUgMjUuMTUzIDE5LjU0IDI1LjE0M1oiIGZpbGw9IiNkOWIxNTQiLz4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXBfMSkiPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNjUuNDE0NywyNC40MDA0OTgpIiBkPSJNMCAwLTEyMy4yNDItLjAwNEMtMTIzLjI4OS0uMDA0LTEyMy4zMzYtLjAwOC0xMjMuMzg2LS4wMTZMLTEyMy42NjEtLjA2SC0xMjMuODU4Vi0uMTU3TC0xMjMuOTQ5LS41NDZDLTEyMy45NjUtLjYxMy0xMjMuOTczLS42OC0xMjMuOTc0LS43NUwtMTIzLjA1Mi0xMDcuMzUyVi0xMDcuMzgzQy0xMjMuMDUzLTEwNy40MTktMTIzLjA1NC0xMDcuNDc0LTEyMy4wNTUtMTA3LjU0NEwtMTIzLjA1Ni0xMDcuNTc1Qy0xMjMuMDU5LTEwNy43NDctMTIzLjA2NC0xMDguMDEzLTEyMy4wNjYtMTA4LjM1OC0xMjMuMDgxLTExMC42Mi0xMjIuOTU4LTExMi4zMDEtMTIyLjkyOS0xMTIuNjc3LTEyMi45MjktMTEyLjY3Ny0xMjIuODIzLTExNC4wNjgtMTIyLjYyMS0xMTUuNTM1LTExOC41NzktMTQ0LjgyNC05OS4wMTQtMTU3LjY1Mi05OS4wMTQtMTU3LjY1Mi04Ni44NTUtMTY1LjYyNS03My45MDUtMTY1Ljk3NC03MC4wMjgtMTY1Ljk1OS02OC4yMDQtMTY1Ljk1Mi02Ni41OC0xNjUuODQxLTY1LjIwMi0xNjUuNjk0LTY1LjMwNi0xNjMuMzkyLTY1LjQxLTE2MS4wODktNjUuNTE0LTE1OC43ODctNjguOTE0LTE1OS4wNDUtNzEuNzU0LTE1OC45NDctNzMuODI2LTE1OC43ODctNzUuNjgtMTU4LjY0NC03Ny42MjYtMTU4LjQ4Ni04MC4wNi0xNTcuOTA0LTgxLjM4OS0xNTcuNTg2LTgzLjc3Mi0xNTYuODItODcuNDc5LTE1NS4xMjEtODkuMzgxLTE1NC4yNDktOTQuMjctMTUxLjk2Ni05OC44MDQtMTQ3Ljc5My0xMDQuNzItMTQyLjM0OC0xMDcuNTcxLTEzNS45NTItMTA4Ljk1Ni0xMzEuODE2TC02My41ODMtMTMxLjgxMy0zNy45OC0xMDEuMTczLTEyLjIwMi0xMDEuMTIzLTEyLjIzMy03NS45NTUtNTEuMDUxLTc1Ljk3Ny03Ni43MDgtMTA2LjY1Ni0xMTYuMzQ3LTEwNi42NzktMTE2LjM1OC03NS44MTgtODIuNzk5LTc1Ljc4My02My4yNzUtNTAuNTgtMTE2LjM1OC01MC41NjlWLTcuODY4SC42NzhWLS44MjhMLjY4MS0uNjM4Qy40NTQtLjQyNSAuMjI3LS4yMTMgMCAwIiBmaWxsPSIjZDliMTU0Ii8+CjwvZz4KPC9nPgo8L3N2Zz4K" alt="" width="34" height="35">
-        <p class="manifesto-frase"><span>Objetivo sem prazo = <em>fantasia</em>.</span><span>Objetivo com prazo = <em>projeto</em>.</span><span>Projeto + Ação Consistente = <em>realização</em>.</span></p>
+        <p class="manifesto-frase"><span>Objetivo sem prazo</span><span>= <em>fantasia</em>.</span><span>Objetivo com prazo</span><span>= <em>projeto</em>.</span><span>Projeto + Ação Consistente</span><span>= <em>realização</em>.</span></p>
         <p class="manifesto-apoio">Na Forward, cada aluno tem diagnóstico, plano de estudo e o professor desde o primeiro dia até o domínio total da língua.</p>
       </div>
       <div class="manifesto-foto rv"><img data-foto="pintura-paisagem" alt="Pintura de paisagem com baía, montanhas e um veleiro" width="840" height="630"></div>
@@ -894,7 +897,7 @@ img.avatar{object-fit:cover}
       <div class="plat-topo rv">
         <div>
           <h2 class="sec-titulo" id="plat-titulo">Projetos Mensais com Propósito. Metas Diárias de Realização.</h2>
-          <p class="sec-sub">Construa verdadeiramente sua fluência com a <span class="enfase">sua cara</span>.</p>
+          <p class="sec-sub">Construa verdadeiramente sua fluência com a <span class="enfase sublinhado">sua cara</span>.</p>
         </div>
         <button class="btn btn-primario" data-ir="aluno">Ver a área do aluno <span class="ico" data-icone="arrow-right"></span></button>
       </div>
@@ -954,6 +957,14 @@ img.avatar{object-fit:cover}
       <h2 class="sec-titulo">Pedro Simi</h2>
       <p class="pedro-cargo">Fundador e professor</p>
       <div class="pedro-pag" data-pag="1" id="pedro-pag-1">
+        <blockquote class="pedro-fala">
+          <span class="pedro-aspas" data-icone="quotes"></span>
+          <p>Alguém que se coloca no seu lugar: “quero aprender a falar outra língua”, em mandarim. Eu estudo mandarim através da língua inglesa.</p>
+          <p>Junjie é meu professor de mandarim, que não fala português, apenas mandarim e inglês; nos encontramos três vezes por semana.</p>
+          <p>Levo a sério a disciplina e o foco, sou hiperativo e amo gente e artes! Pratico jiu-jítsu, música e muita pedagogia e pesquisa! Estou aqui para compartilhar toda a minha dedicação e paixão pela relação aluno-professor (detalhe: eu só treino monstro(a), eu amo isso e vou fazer você suar).</p>
+        </blockquote>
+      </div>
+      <div class="pedro-pag" data-pag="2" id="pedro-pag-2" hidden>
         <div class="pedro-bio">
           <p>Professor de inglês, dá aulas individuais para estudantes e profissionais que querem usar a língua <strong>sem bloqueios ou dificuldades</strong>.</p>
           <p>Acompanha cada aluno de perto: define o plano, corrige as lições e <strong>pressiona com aulas ativas, desafiadoras e enriquecedoras</strong>.</p>
@@ -965,19 +976,11 @@ img.avatar{object-fit:cover}
         </ul>
         <p class="assinatura">Let’s go forward.</p>
       </div>
-      <div class="pedro-pag" data-pag="2" id="pedro-pag-2" hidden>
-        <blockquote class="pedro-fala">
-          <span class="pedro-aspas" data-icone="quotes"></span>
-          <p>Alguém que se coloca no seu lugar: “quero aprender a falar outra língua”, em mandarim. Eu estudo mandarim através da língua inglesa.</p>
-          <p>Junjie é meu professor de mandarim, que não fala português, apenas mandarim e inglês; nos encontramos três vezes por semana.</p>
-          <p>Levo a sério a disciplina e o foco, sou hiperativo e amo gente e artes! Pratico jiu-jítsu, música e muita pedagogia e pesquisa! Estou aqui para compartilhar toda a minha dedicação e paixão pela relação aluno-professor (detalhe: eu só treino monstro(a), eu amo isso e vou fazer você suar).</p>
-        </blockquote>
-      </div>
       <div class="pedro-nav">
         <button class="icone-btn pedro-anterior" aria-label="Página anterior" aria-controls="pedro-pag-1 pedro-pag-2" disabled><span data-icone="caret-left"></span></button>
         <span class="pedro-conta" aria-live="polite">1 / 2</span>
         <button class="icone-btn pedro-seguinte" aria-label="Próxima página" aria-controls="pedro-pag-1 pedro-pag-2"><span data-icone="caret-right"></span></button>
-        <span class="pedro-dica">Na voz do Pedro</span>
+        <span class="pedro-dica">Quem é o Pedro</span>
       </div>
     </div>
   </section>
@@ -1068,7 +1071,13 @@ img.avatar{object-fit:cover}
           <p>Dura 60 minutos, online. Idealmente, você chega para a aula experimental com:</p>
           <ul class="faq-itens">
             <li>a videoaula introdutória da Forward, “Como aprender qualquer idioma”;</li>
-            <li>uma apresentação sobre o roteiro da aula, com três pontos: teoria e mapa de como aprender uma língua e o que é o CEFR (Cambridge); o Método Construtor (o que é, como fazer e por que é bom); e as bibliotecas (seja curioso);</li>
+            <li>uma apresentação sobre o roteiro da aula, com três pontos:
+              <ul class="faq-sub">
+                <li>teoria e mapa de como aprender uma língua e o que é o CEFR (Cambridge);</li>
+                <li>o Método Construtor: o que é, como fazer e por que é bom;</li>
+                <li>as bibliotecas (seja curioso);</li>
+              </ul>
+            </li>
             <li>se possível, um ciclo do Método Construtor sobre algum material da sua escolha.</li>
           </ul>
           <p>Na videoaula são mostradas e sugeridas as bibliotecas de referência utilizadas no curso Forward.</p>
@@ -2373,8 +2382,8 @@ function fecharMenu() {
   setTimeout(() => { if (!m.classList.contains('aberto')) m.hidden = true; }, semMovimento.matches ? 0 : 250);
   if (document.activeElement === $('#fechar-menu')) $('#abrir-menu').focus({ preventScroll: true });
 }
-/* seção do Pedro em duas páginas: apresentação e o depoimento dele */
-function pedroPagina(n) {
+/* seção do Pedro em duas páginas: o depoimento dele primeiro, depois a apresentação */
+function pedroPagina(n, manual = true) {
   $$('.pedro-pag').forEach(p => {
     const ativa = Number(p.dataset.pag) === n;
     p.hidden = !ativa;
@@ -2384,7 +2393,20 @@ function pedroPagina(n) {
   $('.pedro-dica').hidden = n === 2;
   const ant = $('.pedro-anterior'), seg = $('.pedro-seguinte');
   ant.disabled = n === 1; seg.disabled = n === 2;
-  (n === 2 ? ant : seg).focus({ preventScroll: true });
+  if (manual) { clearInterval(pedroTimer); (n === 2 ? ant : seg).focus({ preventScroll: true }); }
+}
+/* troca sozinha a cada 12 s; para enquanto o mouse ou o foco estão na seção, e de vez depois que a pessoa usa as setas */
+let pedroTimer = null;
+function iniciarPedroAuto() {
+  if (semMovimento.matches) return;
+  const secao = $('#pedro'); let parado = false;
+  const parar = () => { parado = true; }, seguir = () => { parado = false; };
+  secao.addEventListener('mouseenter', parar); secao.addEventListener('mouseleave', seguir);
+  secao.addEventListener('focusin', parar); secao.addEventListener('focusout', seguir);
+  pedroTimer = setInterval(() => {
+    if (parado || est.tela !== 'site' || document.hidden) return;
+    pedroPagina($('#pedro-pag-1').hidden ? 1 : 2, false);
+  }, 12000);
 }
 
 /* carrossel do topo: troca sozinho a cada 6 s; com movimento reduzido, só pelos botões */
@@ -2422,6 +2444,7 @@ montarDados();
 montarAgendaProf();
 hidratar();
 iniciarCarrossel();
+iniciarPedroAuto();
 montarAgendaExp();
 montarFormAplicar();
 renderAluno();
